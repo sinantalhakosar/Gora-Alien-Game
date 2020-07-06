@@ -1,0 +1,787 @@
+{
+	"info": {
+		"_postman_id": "5618bada-5334-4a31-b5a8-a52f9741f03e",
+		"name": "group13_postmancollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register_request_ok",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"john\",\n\t\"surname\":\"doe\",\n\t\"email\":\"john@doe.com\",\n\t\"username\":\"johndoe\",\n\t\"password\":\"johnpass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/account/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register_request_missing",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c89fd141-e14e-4c36-9983-221f3204f7aa",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(422);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"john\",\n\t\"surname\":\"doe\",\n\t\"username\":\"johndoe_noemail\",\n\t\"password\":\"johnpass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/account/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register_request_exists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aee44d18-900a-4c77-af6f-f5b8a3b9b730",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"jack\",\n\t\"surname\":\"boe\",\n\t\"email\":\"jack@boe.com\",\n\t\"username\":\"johndoe\",\n\t\"password\":\"jackpass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/account/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_request_ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "53ea0ff5-0272-470f-9275-a6d1bb2f85b7",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"johndoe\",\n\t\"password\":\"johnpass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/account/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_request_ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43dd8c59-8945-4d7e-8da3-5cdd8afb1dfc",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"adam\",\n\t\"surname\":\"green\",\n\t\"email\":\"adam@green.com\",\n\t\"username\":\"adamg\",\n\t\"password\":\"adampass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/account/update/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"update",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAccount_request_ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "004180a5-d0a8-4ff5-883d-ed64997e42ac",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/account/getAccount/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"getAccount",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAccounts_request_ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b52775ca-7607-4557-99fe-1f8e1a2e26b2",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"No Account test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/account/getAccounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"getAccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_request_ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40411309-7a34-45e3-9c87-d8603c1c63fa",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/account/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_request_fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "deea1534-5401-47ab-a759-4276caa7a874",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/account/delete/33",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"delete",
+						"33"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_request_fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2d54a1c8-1ae3-4333-8229-a2e2660b1060",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"johndoe\",\n\t\"password\":\"evepass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/account/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_request_fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8b362f91-6a4e-4c05-b6f2-c1cb39f475cb",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"eve\",\n\t\"surname\":\"doe\",\n\t\"email\":\"eve@doe.com\",\n\t\"username\":\"evedoe\",\n\t\"password\":\"evepass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/account/update/33",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"update",
+						"33"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAccount_request_fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2ae99fcc-d559-46ed-b498-7606ad3aa20d",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/account/getAccount/evedoe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"getAccount",
+						"evedoe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addScore_request_ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "883a2355-9fff-487a-9d3b-1a4643f14a35",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/score/addScore/1/20/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"score",
+						"addScore",
+						"1",
+						"20",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addScore_request_fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "25ce34a0-7b88-442a-8182-f9f5871b2ef0",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/score/addScore/33/10/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"score",
+						"addScore",
+						"33",
+						"10",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getScore_request_fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d5c7293e-59a3-4dfb-9c97-a8a78da7991e",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/score/getScore/33",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"score",
+						"getScore",
+						"33"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getScore_request_ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aa8a6e8f-b0e6-4f92-bd0b-e84df09b06e2",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/score/getScore/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"score",
+						"getScore",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllScores_request_ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "21fef942-b103-45db-9d81-2227e7aa0995",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Server error test\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/score/getAllScores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"score",
+						"getAllScores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getWeeklyScore_request_ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d4750d3-318b-4262-b228-28d62ac0404d",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Server Error test\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/score/getWeeklyScores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"score",
+						"getWeeklyScores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMonthlyScores_request_ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "21fef942-b103-45db-9d81-2227e7aa0995",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Server error test\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/score/getMonthlyScores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"score",
+						"getMonthlyScores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "setStatus_request_ok",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/account/status/johndoe/IN_LOBBY",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"account",
+						"status",
+						"johndoe",
+						"IN_LOBBY"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "setStatus_request_fail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.aliengame.client.controller.MainMenuController">
+    <top>
+        <BorderPane style="-fx-padding: 0 0 0 0;">
+            <top>
+                <Text style="-fx-fill: white;-fx-font: 17px Arial, sans-serif" text="Spaceship: KA-FA 1500"
+                      BorderPane.alignment="CENTER"/>
+            </top>
+            <center>
+                <ImageView fitHeight="200" fitWidth="200" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@/assets/images/shipA.png"/>
+                </ImageView>
+            </center>
+
+
+        </BorderPane>
+    </top>
+    <center>
+
+
+        <VBox BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" style="-fx-background-color: rgba(167,166,157,0.3)">
+                <Label text="Welcome dear Earthling" textFill="white">
+                    <font>
+                        <Font name="Arial Black" size="24.0"/>
+                    </font>
+                </Label>
+                <HBox alignment="CENTER">
+
+                    <Button layoutX="20.0" layoutY="149.0" mnemonicParsing="false"
+                            onAction="#handleLeaderBoardButtonAction" prefHeight="70" prefWidth="325.0"
+                            text="SCORE BOARD">
+                        <font>
+                            <Font name="Arial Bold" size="24.0"/>
+                        </font>
+                    </Button>
+
+                    <Button layoutX="20.0" layoutY="149.0" mnemonicParsing="false" onAction="#handlePlayButtonAction"
+                            prefHeight="70" prefWidth="325.0" text="PLAY">
+                        <font>
+                            <Font name="Arial Bold" size="24.0"/>
+                        </font>
+                    </Button>
+
+                    <Button layoutX="20.0" layoutY="149.0" mnemonicParsing="false" onAction="#handleLogoutButtonAction"
+                            prefHeight="70" prefWidth="325.0" text="LOGOUT">
+                        <font>
+                            <Font name="Arial Bold" size="24.0"/>
+                        </font>
+                    </Button>
+                </HBox>
+
+                <TextFlow>
+                    <Text style="-fx-fill: white;-fx-font: 17px Arial, sans-serif"
+                          text="- You should hit any alien as it's health times to kill...&#10;- You can control our Hero with WASD in 4 direction&#10;- Or with mouse in 2 direction.&#10;- Aliens and our ship fire simultaneously&#10; - Also you can fire with SPACE key&#10;- New enemies have level number health&#10;- You can hit alien's bullet to kill bullets and each have 1 point&#10;- On the top you can track your health, score and current level&#10; - After 4 level you will see your score&#10;- After level 4, you will connect to lobby for level 5&#10;- In lobby, you can invite user for level 5 or accept invitation&#10;- User with higher point before or inviter for level 5 will get ship KA-FA 1500 in  level 5&#10;- User with higher point after level 5 will get bonus point"
+                          textAlignment="JUSTIFY" wrappingWidth="600.0"/>
+                </TextFlow>
+            </VBox>
+
+
+        </VBox>
+
+
+    </center>
+
+</BorderPane>

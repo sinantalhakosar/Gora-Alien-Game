@@ -1,0 +1,7 @@
+How to Play Space Invaders Game:
+
+Use 'W' to go up, 'S' to go down, 'D' to go right and 'A' to go to left.
+Use mouse to move in only right and left.
+Use 'Space' to fire or autofire.
+
+Save the universe .....
